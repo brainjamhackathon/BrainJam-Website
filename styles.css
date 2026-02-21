@@ -119,6 +119,37 @@ body {
     margin-bottom: 2vw;
 }
 
+.countdown-ended {
+    color: var(--dark-pink);
+    font-size: clamp(1.2rem, 3vw, 2.5rem);
+    font-weight: 700;
+}
+
+.countdown {
+    display: flex;
+    gap: clamp(15px, 3vw, 40px);
+    color: var(--dark-pink);
+    margin-bottom: 2vw;
+}
+
+.countdown-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.countdown-item > span:first-child {
+    font-size: clamp(1.5rem, 4vw, 3.5rem);
+    font-weight: 700;
+}
+
+.countdown-label {
+    font-size: clamp(0.6rem, 1.2vw, 1rem);
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
 .buttons-row {
     display: flex;
     align-items: center;
@@ -312,16 +343,50 @@ body {
     line-height: 1.6;
 }
 
-.tan-container {
-    background-color: var(--tan);
-    border-radius: 50px 50px 0 0;
-    width: 100%;
-    transition: all 0.8s ease;
-    padding-top: 8vw;
-    padding-bottom: 0;
+.sponsor-belt {
+    background: white;
+    padding: 1.5vw 0;
+    overflow: hidden;
+    margin: 0 -5vw;
+    width: calc(100% + 10vw);
 }
 
-.tan-container.expanded {
+.sponsor-track {
+    display: flex;
+    align-items: center;
+    width: max-content;
+    animation: scroll-sponsors 30s linear infinite;
+}
+
+.sponsor-set {
+    display: flex;
+    align-items: center;
+    gap: clamp(30px, 5vw, 80px);
+    padding-right: clamp(30px, 5vw, 80px);
+}
+
+.sponsor-logo {
+    height: clamp(30px, 4vw, 60px);
+    object-fit: contain;
+    opacity: 0.8;
+}
+
+@keyframes scroll-sponsors {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+
+#details {
+    scroll-margin-top: 2vw;
+}
+
+#register,
+#sponsor {
+    scroll-margin-top: 4vw;
+}
+
+.tan-container {
+    background-color: var(--tan);
     border-radius: 0;
     position: relative;
     margin: 0 -5vw;
@@ -545,7 +610,15 @@ body {
     color: var(--tan);
     font-size: clamp(1.8rem, 3vw, 3rem);
     text-align: center;
-    margin-bottom: 3vw;
+    margin-bottom: 1vw;
+}
+
+.prizes-subtitle {
+    color: var(--tan);
+    font-size: clamp(1.2rem, 2vw, 1.8rem);
+    text-align: center;
+    font-weight: 500;
+    opacity: 0.85;
 }
 
 /* Judging Criteria */
@@ -615,13 +688,13 @@ body {
     padding: 8vw 5vw 5vw 5vw;
     min-height: 100vh;
     transition: all 0.8s ease;
-    margin-top: 8vw;
+    margin-top: 3vw;
 }
 
 .faq-container.expanded {
     border-radius: 0;
     min-height: 100vh;
-    margin: 8vw -5vw -5vw -5vw;
+    margin: 3vw -5vw -5vw -5vw;
     width: calc(100% + 10vw);
     padding: 8vw 10vw 5vw 10vw;
     overflow: visible;
@@ -709,18 +782,16 @@ body {
     background-color: var(--tan);
     border-radius: 50px 50px 0 0;
     width: 100%;
-    padding: 8vw 5vw 5vw 5vw;
-    min-height: 100vh;
+    padding: 5vw 5vw 4vw 5vw;
     transition: all 0.8s ease;
     margin-top: 8vw;
 }
 
 .register-container.expanded {
     border-radius: 0;
-    min-height: 100vh;
     margin: 8vw -5vw 0 -5vw;
     width: calc(100% + 10vw);
-    padding: 8vw 10vw 5vw 10vw;
+    padding: 5vw 10vw 4vw 10vw;
 }
 
 .register-content {
@@ -805,6 +876,8 @@ body {
     border-left: 4px solid var(--dark-pink);
     padding: 1.5vw 2vw;
     border-radius: 0 10px 10px 0;
+    width: 100%;
+    margin-top: 2vw;
 }
 
 .register-note p {
@@ -814,7 +887,7 @@ body {
 }
 
 .register-note strong {
-    color: var(--dark-pink);
+    color: var(--brown);
 }
 
 /* Registration Form */
@@ -822,7 +895,8 @@ body {
     flex: 1;
     background-color: var(--brown);
     border-radius: 20px;
-    padding: 3vw;
+    padding: 2.5vw 3vw;
+    align-self: flex-start;
 }
 
 .register-form {
@@ -843,7 +917,8 @@ body {
 }
 
 .form-group input,
-.form-group select {
+.form-group select,
+.form-group textarea {
     background-color: rgba(241, 234, 211, 0.1);
     border: 1px solid rgba(241, 234, 211, 0.2);
     border-radius: 10px;
@@ -853,14 +928,21 @@ body {
     font-size: clamp(0.9rem, 1.1vw, 1.1rem);
     outline: none;
     transition: border-color 0.3s ease;
+    width: 100%;
 }
 
-.form-group input::placeholder {
+.form-group textarea {
+    resize: vertical;
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
     color: rgba(241, 234, 211, 0.5);
 }
 
 .form-group input:focus,
-.form-group select:focus {
+.form-group select:focus,
+.form-group textarea:focus {
     border-color: var(--dark-pink);
 }
 
