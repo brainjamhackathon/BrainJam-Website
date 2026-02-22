@@ -55,15 +55,13 @@ body {
     transition: width 0.4s ease, gap 0.4s ease;
 }
 
-@media (min-width: 769px) {
-    .nav-island.scrolled {
-        width: clamp(200px, 35vw, 400px);
-        gap: clamp(10px, 1.5vw, 20px);
-    }
+.nav-island.scrolled {
+    width: clamp(200px, 35vw, 400px);
+    gap: clamp(10px, 1.5vw, 20px);
+}
 
-    .nav-island.scrolled .nav-link {
-        font-size: clamp(0.6rem, 0.9vw, 0.85rem);
-    }
+.nav-island.scrolled .nav-link {
+    font-size: clamp(0.6rem, 0.9vw, 0.85rem);
 }
 
 .nav-link {
@@ -92,10 +90,8 @@ body {
     transform: scale(1.15);
 }
 
-@media (min-width: 769px) {
-    .nav-island.scrolled .brain-logo {
-        height: clamp(45px, 6vw, 80px);
-    }
+.nav-island.scrolled .brain-logo {
+    height: clamp(45px, 6vw, 80px);
 }
 
 .hero {
@@ -157,8 +153,8 @@ body {
 }
 
 .btn {
-    padding: clamp(4px, 0.5vw, 8px) clamp(30px, 4vw, 70px);
-    font-size: clamp(1.1rem, 1.8vw, 1.6rem);
+    padding: max(4px, 0.5vw) max(20px, 4vw);
+    font-size: max(0.85rem, 1.8vw);
     border-radius: 50px;
     cursor: pointer;
     font-weight: 600;
@@ -192,15 +188,15 @@ body {
 }
 
 .decoration {
-    height: clamp(50px, 6vw, 100px);
+    height: max(35px, 6vw);
 }
 
 .stars {
-    margin-right: clamp(5px, 1vw, 20px);
+    margin-right: max(4px, 1vw);
 }
 
 .marks {
-    margin-left: clamp(5px, 1vw, 20px);
+    margin-left: max(4px, 1vw);
 }
 
 .brain-section {
@@ -216,7 +212,7 @@ body {
 
 .brain-icon {
     position: absolute;
-    height: clamp(120px, 22vw, 350px);
+    height: 22vw;
     animation: bounce 2s ease-in-out infinite;
 }
 
@@ -238,13 +234,13 @@ body {
 .sprout {
     left: 30%;
     top: 3%;
-    height: clamp(180px, 32vw, 400px);
+    height: 32vw;
     animation-delay: 0.5s;
 }
 
 @media (min-width: 1024px) {
     .sprout {
-        height: clamp(220px, 35vw, 450px);
+        height: 35vw;
     }
 }
 
@@ -986,6 +982,27 @@ body {
     color: var(--brown);
 }
 
+.success-message {
+    color: var(--tan);
+    font-family: 'BPreplay', sans-serif;
+    font-size: 1.2rem;
+    text-align: center;
+    padding: 2rem 0 0.5rem;
+}
+
+.success-countdown {
+    color: rgba(241, 234, 211, 0.6);
+    font-family: 'BPreplay', sans-serif;
+    font-size: 0.9rem;
+    text-align: center;
+    padding-bottom: 1rem;
+}
+
+.success-back-btn {
+    display: block;
+    margin: 0 auto;
+}
+
 /* Footer Contact */
 .footer-contact {
     background-color: var(--light-pink);
@@ -1056,6 +1073,46 @@ body {
 
 /* Mobile Responsive */
 @media (max-width: 768px) {
+    /* Navbar */
+    .nav-island.scrolled {
+        width: 70vw;
+        gap: 10px;
+    }
+
+    .nav-island.scrolled .nav-link {
+        font-size: 0.6rem;
+    }
+
+    .nav-island.scrolled .brain-logo {
+        height: 45px;
+    }
+
+    /* Scroll offsets */
+    #about {
+        scroll-margin-top: 15vw;
+    }
+
+    #details {
+        scroll-margin-top: 15vw;
+    }
+
+    #faq {
+        scroll-margin-top: 15vw;
+    }
+
+    #register,
+    #sponsor {
+        scroll-margin-top: 8vw;
+    }
+
+
+    /* Hero */
+    .info-line {
+        flex-direction: column;
+        align-items: center;
+        gap: 4px;
+    }
+
     /* Info Cards */
     .info-cards-row {
         flex-direction: column;
@@ -1102,7 +1159,6 @@ body {
 
     .faq-question {
         padding: 4vw 3vw;
-        font-size: clamp(0.9rem, 4vw, 1.2rem);
     }
 
     .faq-item.active .faq-answer {
@@ -1122,7 +1178,7 @@ body {
 
     .register-content {
         flex-direction: column;
-        gap: 8vw;
+        gap: 3vw;
     }
 
     .register-left,
@@ -1138,13 +1194,18 @@ body {
         padding: 4vw;
     }
 
+    .register-note {
+        margin-top: 5vw;
+    }
+
     .form-group input,
-    .form-group select {
+    .form-group select,
+    .form-group textarea {
         padding: 3vw 4vw;
     }
 
     .submit-btn {
-        padding: 4vw 6vw;
+        padding: 3vw 6vw;
         width: 100%;
     }
 
@@ -1177,17 +1238,13 @@ body {
         padding: 10vw 5vw;
     }
 
+
     .email-box {
         padding: 3vw 5vw;
     }
 
     .social-icons {
         gap: 4vw;
-    }
-
-    .social-icon {
-        width: 50px;
-        height: 50px;
     }
 }
 
