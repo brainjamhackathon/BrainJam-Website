@@ -1,3 +1,5 @@
+https://brainjamhackathon.github.io/BrainJam-Website/
+
 # BrainJam Hackathon Website
 
 A modern, responsive website for BrainJam - an annual weekend hackathon at the University of New Orleans.
