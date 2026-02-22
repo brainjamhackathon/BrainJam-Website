@@ -1,51 +1,29 @@
-https://brainjamhackathon.github.io/BrainJam-Website/
+<img width="1856" height="333" alt="Title" src="https://github.com/user-attachments/assets/171d99f6-4864-4524-b333-c221853a581a" />
 
-# BrainJam Hackathon Website
+---
+<p align="center">
+A 4-day hackathon at the University of New Orleans where students brainstorm, design, and build creative projects around a surprise theme.
+</p>
 
-A modern, responsive website for BrainJam - an annual weekend hackathon at the University of New Orleans.
+<p align="center">
+<b>March 24-27, 2026 · Earl Long Library Room 407</b><br>
+2000 Lakeshore Dr, New Orleans, LA 70148
+</p>
 
-## Features
+<p align="center">
+<a href="https://brainjamhackathon.github.io/BrainJam-Website/">Website</a> · <a href="https://discord.com/invite/uUCsBpmvU5">Discord</a> · <a href="https://www.linkedin.com/in/brainjam-hackathon/">LinkedIn</a> · <a href="mailto:brainjam.hackathon@gmail.com">Email Us</a>
+</p>
 
-- Responsive design for all screen sizes
-- Smooth scroll navigation
-- Animated navbar that shrinks on scroll
-- Expanding container sections with scroll animations
-- Interactive FAQ accordion
-- Registration form
-- Event details with schedule, location, and prizes
+---
 
-## Technologies Used
+BrainJam is for everyone, no coding experience needed. Build a mobile app, design a video game, create a website, or dream up something entirely new. Teams of 2-5 can come pre-formed or find each other at our team formation event on Day 1.
 
-- HTML5
-- CSS3 (Custom properties, Flexbox, Grid, Animations)
-- Vanilla JavaScript
+It's completely free. We provide meals, snacks, energy drinks, WiFi, workspace, and swag.
 
-## Sections
+**To register**, head to our [website](https://brainjamhackathon.github.io/BrainJam-Website/) and fill out the form with your name, email, and Discord username. Then join our [Discord server](https://discord.com/invite/uUCsBpmvU5) to complete your registration — that's where all announcements will be made.
 
-- **Hero** - Title, date, and call-to-action buttons
-- **About** - Brain characters and event mascots
-- **Event Details** - When, Where, What We Provide, Schedule
-- **Judging Criteria** - Innovation, Impact, Execution, Presentation
-- **Prizes** - 1st, 2nd, and 3rd place awards
-- **FAQ** - Frequently asked questions with accordion
-- **Registration** - Sign-up form for participants
-- **Contact** - Get in touch and social media links
+**Interested in sponsoring?** Reach out at brainjam.hackathon@gmail.com or fill out the sponsor form on our website.
 
-## Setup
+---
 
-1. Clone the repository
-2. Open `index.html` in a browser
-
-No build tools or dependencies required.
-
-## Fonts
-
-- Mini (custom font)
-- BPreplayBold (for form inputs)
-
-## Color Palette
-
-- Tan: `#F1EAD3`
-- Light Pink: `#F0D9D6`
-- Dark Pink: `#EAC1C0`
-- Brown: `#74675B`
+<p align="center">See you at BrainJam!</p>
