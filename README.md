@@ -1,5 +1,5 @@
 <img width="1856" height="333" alt="Title" src="https://github.com/user-attachments/assets/171d99f6-4864-4524-b333-c221853a581a" />
-
+ 
 ---
 <p align="center">
 A 4-day hackathon at the University of New Orleans where students brainstorm, design, and build creative projects around a surprise theme.
