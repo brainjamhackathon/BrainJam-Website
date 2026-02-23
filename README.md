@@ -12,7 +12,7 @@
 ---
 A 4-day hackathon at the University of New Orleans where students brainstorm, design, and build creative projects around a surprise theme.
 
-BrainJam is for everyone, no coding experience needed. Build a mobile app, design a video game, create a website, or dream up something entirely new. Teams of 2-5 can come pre-formed or find each other at our team formation event on Day 1.
+BrainJam is for everyone, no coding experience needed. Build a mobile app, design a video game, create a website, or dream up something entirely new. Teams of 1-5 can come pre-formed or find each other at our team formation event on Day 1.
 
 It's completely free. We provide meals, snacks, energy drinks, WiFi, workspace, and swag.
 
