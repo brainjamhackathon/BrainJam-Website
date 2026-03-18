@@ -6,7 +6,7 @@
 </p>
 
 <p align="center">
-<a href="https://brainjamhackathon.github.io/BrainJam-Website/">Website</a> · <a href="https://discord.com/invite/uUCsBpmvU5">Discord</a> · <a href="https://www.linkedin.com/in/brainjam-hackathon/">LinkedIn</a> · <a href="mailto:brainjam.hackathon@gmail.com">Email Us</a>
+<a href="https://brainjamhackathon.github.io/BrainJam-Website/">Website</a> · <a href="https://discord.com/invite/uUCsBpmvU5">Discord</a> · <a href="https://www.linkedin.com/company/brainjam-hackthon/">LinkedIn</a> · <a href="mailto:brainjam.hackathon@gmail.com">Email Us</a>
 </p>
 
 ---
