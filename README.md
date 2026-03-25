@@ -18,8 +18,4 @@ It's completely free. We provide meals, snacks, energy drinks, WiFi, workspace, 
 
 **To register**, head to our [website](https://brainjamhackathon.github.io/BrainJam-Website/) and fill out the form with your name, email, and Discord username. Then join our [Discord server](https://discord.com/invite/uUCsBpmvU5) to complete your registration (that's where all announcements will be made).
 
-<<<<<<< Updated upstream
 **Interested in sponsoring?** Reach out at brainjam.hackathon@gmail.com or fill out the sponsor form on our website. 
-=======
-**Interested in sponsoring?** Reach out at brainjam.hackathon@gmail.com or fill out the sponsor form on our website. 
->>>>>>> Stashed changes
