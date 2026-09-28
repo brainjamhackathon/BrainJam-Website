@@ -1,6 +1,6 @@
-// Countdown to March 24, 2026
+// Countdown to March 26, 2027
 function updateCountdown() {
-    const target = new Date('2026-03-24T12:00:00').getTime();
+    const target = new Date('2027-03-26T12:00:00').getTime();
     const now = Date.now();
     const diff = target - now;
 
@@ -153,6 +153,18 @@ if (sponsorForm) {
         });
     });
 }
+
+// Sponsor Package Buttons: prefill the sponsor message and jump to the form
+document.querySelectorAll('.package-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+        const message = document.getElementById('sponsor-message');
+        if (message) {
+            message.value = `Hi! We're interested in the ${btn.dataset.package} package.`;
+        }
+        document.querySelector('.sponsor-contact').scrollIntoView({ behavior: 'smooth', block: 'center' });
+        if (message) message.focus({ preventScroll: true });
+    });
+});
 
 // FAQ Accordion
 const faqQuestions = document.querySelectorAll('.faq-question');
