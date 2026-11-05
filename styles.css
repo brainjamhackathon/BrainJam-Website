@@ -508,6 +508,13 @@ body {
     opacity: 0.8;
 }
 
+/* Square logo with built-in padding: scale it up so the mark matches the others,
+   pulling the margins in so the belt height doesn't change */
+.sponsor-logo-square {
+    height: clamp(48px, 6.4vw, 96px);
+    margin: calc(clamp(48px, 6.4vw, 96px) * -0.2) 0;
+}
+
 @keyframes scroll-sponsors {
     0% { transform: translateX(0); }
     100% { transform: translateX(-50%); }
