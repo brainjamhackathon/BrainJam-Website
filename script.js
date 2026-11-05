@@ -1,6 +1,6 @@
-// Countdown to March 26, 2027
+// Countdown to March 23, 2027
 function updateCountdown() {
-    const target = new Date('2027-03-26T12:00:00').getTime();
+    const target = new Date('2027-03-23T12:00:00').getTime();
     const now = Date.now();
     const diff = target - now;
 
@@ -26,11 +26,10 @@ setInterval(updateCountdown, 1000);
 
 // JavaScript for website
 
-const faqContainer = document.querySelector('.faq-container');
-const registerContainers = document.querySelectorAll('.register-container');
 const navIsland = document.querySelector('.nav-island');
+const expandBands = document.querySelectorAll('.band:not(.band-flat)');
 
-window.addEventListener('scroll', () => {
+function onScroll() {
     const windowHeight = window.innerHeight;
 
     // Navbar shrink on scroll
@@ -40,26 +39,21 @@ window.addEventListener('scroll', () => {
         navIsland.classList.remove('scrolled');
     }
 
-    // FAQ container expand
-    if (faqContainer) {
-        const faqRect = faqContainer.getBoundingClientRect();
-        if (faqRect.top <= windowHeight * 0.4) {
-            faqContainer.classList.add('expanded');
+    // Section sheets expand to full width as they scroll into view
+    // (the last one can't scroll that high, so it also expands at the page bottom)
+    const atBottom = window.scrollY + windowHeight >= document.documentElement.scrollHeight - 2;
+    expandBands.forEach(band => {
+        const rect = band.getBoundingClientRect();
+        if (rect.top <= windowHeight * 0.4 || (atBottom && rect.top < windowHeight)) {
+            band.classList.add('expanded');
         } else {
-            faqContainer.classList.remove('expanded');
-        }
-    }
-
-    // Register containers expand
-    registerContainers.forEach(container => {
-        const rect = container.getBoundingClientRect();
-        if (rect.top <= windowHeight * 0.4) {
-            container.classList.add('expanded');
-        } else {
-            container.classList.remove('expanded');
+            band.classList.remove('expanded');
         }
     });
-});
+}
+
+window.addEventListener('scroll', onScroll);
+onScroll();
 
 // Schedule Tabs
 document.querySelectorAll('.schedule-tab').forEach(tab => {
@@ -72,51 +66,6 @@ document.querySelectorAll('.schedule-tab').forEach(tab => {
         });
     });
 });
-
-// EmailJS Init
-emailjs.init('FNep_lRL9csYPBlcq');
-
-// Registration Form
-const registerForm = document.getElementById('register-form');
-if (registerForm) {
-    registerForm.addEventListener('submit', (e) => {
-        e.preventDefault();
-        const btn = registerForm.querySelector('.submit-btn');
-        const originalText = btn.textContent;
-        btn.textContent = 'Submitting...';
-        btn.disabled = true;
-
-        const data = {
-            name: document.getElementById('reg-name').value,
-            email: document.getElementById('reg-email').value,
-            discord: document.getElementById('reg-discord').value
-        };
-
-        fetch('https://script.google.com/macros/s/AKfycbzSj5oUn9jA8BlX8_-P8UJTyKTfjsny4mIXZ3ANgyQeSzJskNo4cimseAHTnLc6Sl5M/exec', {
-            method: 'POST',
-            body: JSON.stringify(data)
-        })
-        .then(() => {
-            emailjs.send('service_x89rja6', 'template_9qd06qq', {
-                user_name: data.name,
-                user_email: data.email
-            });
-            const formHTML = registerForm.innerHTML;
-            registerForm.innerHTML = '<p class="success-message">You\'re registered! Check your email for next steps.</p><button type="button" class="submit-btn success-back-btn">Register Another ✦</button>';
-
-            registerForm.querySelector('.success-back-btn').addEventListener('click', () => {
-                registerForm.innerHTML = formHTML;
-                registerForm.querySelector('.submit-btn').disabled = false;
-                registerForm.reset();
-            });
-        })
-        .catch(() => {
-            btn.textContent = originalText;
-            btn.disabled = false;
-            alert('Something went wrong. Please try again.');
-        });
-    });
-}
 
 // Sponsor Form
 const sponsorForm = document.getElementById('sponsor-form');
@@ -165,6 +114,40 @@ document.querySelectorAll('.package-btn').forEach(btn => {
         if (message) message.focus({ preventScroll: true });
     });
 });
+
+// Past BrainJams: collapsed by default, opened by the button or the heading
+const pastSection = document.getElementById('past');
+if (pastSection) {
+    const pastToggle = pastSection.querySelector('.past-toggle');
+    const pastToggleText = pastSection.querySelector('.past-toggle-text');
+    const pastContent = pastSection.querySelector('.past-content');
+    const togglePast = () => {
+        const isOpen = pastSection.classList.toggle('open');
+        pastToggle.setAttribute('aria-expanded', isOpen);
+        pastToggleText.textContent = isOpen ? 'Hide past BrainJams' : 'Show past BrainJams';
+
+        // Animate from the current height to the target, then release the cap when open
+        clearTimeout(pastTimer);
+        pastContent.style.maxHeight = pastContent.scrollHeight + 'px';
+        if (isOpen) {
+            pastTimer = setTimeout(releasePast, 800);
+        } else {
+            pastContent.offsetHeight; // force layout so the collapse animates
+            pastContent.style.maxHeight = '0px';
+        }
+    };
+    let pastTimer;
+    const releasePast = () => {
+        if (pastSection.classList.contains('open')) {
+            pastContent.style.maxHeight = 'none';
+        }
+    };
+    pastContent.addEventListener('transitionend', (e) => {
+        if (e.propertyName === 'max-height') releasePast();
+    });
+    pastToggle.addEventListener('click', togglePast);
+    pastSection.querySelector('.past-heading').addEventListener('click', togglePast);
+}
 
 // FAQ Accordion
 const faqQuestions = document.querySelectorAll('.faq-question');

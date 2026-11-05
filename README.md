@@ -1,7 +1,7 @@
 <img width="1856" height="333" alt="Title" src="https://github.com/user-attachments/assets/171d99f6-4864-4524-b333-c221853a581a" />
  
  <p align="center">
-<b>March 26-29, 2027 · Earl Long Library Room 407</b><br>
+<b>March 23-26, 2027 · Earl Long Library Room 407</b><br>
 2000 Lakeshore Dr, New Orleans, LA 70148
 </p>
 

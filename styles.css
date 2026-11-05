@@ -281,18 +281,156 @@ body {
     text-align: center;
 }
 
-.pink-section {
-    background-color: var(--light-pink);
-    min-height: 100vh;
-    padding: 5vw;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+/* Section Bands
+   Each section sits on the previous section's color (--band-prev) as a rounded,
+   inset sheet (::before). When scrolled into view, script.js adds .expanded and
+   the sheet grows to full width with square corners. */
+.band {
+    position: relative;
+    padding: 7vw 10vw 6vw 10vw;
+    background-color: var(--band-prev, transparent);
+    scroll-margin-top: 70px;
+}
+
+.band::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 5vw;
+    right: 5vw;
+    background-color: var(--band-bg);
+    border-radius: 50px 50px 0 0;
+    box-shadow: 0 -10px 30px rgba(116, 103, 91, 0.12);
+    transition: left 0.8s ease, right 0.8s ease, border-radius 0.8s ease;
+}
+
+.band.expanded::before {
+    left: 0;
+    right: 0;
+    border-radius: 0;
+}
+
+.band > * {
+    position: relative;
+}
+
+.band-flat {
+    padding: 5.5vw 5vw 6vw 5vw;
+    background-color: var(--band-bg);
+}
+
+.band-flat::before {
+    content: none;
+}
+
+.band-pink {
+    --band-bg: var(--light-pink);
+}
+
+.band-tan {
+    --band-bg: var(--tan);
+}
+
+.band-rose {
+    --band-bg: var(--dark-pink);
+}
+
+.band-brown {
+    --band-bg: var(--brown);
+}
+
+/* Color each sheet sits on = the section above it */
+#register,
+#contact {
+    --band-prev: var(--light-pink);
+}
+
+#faq {
+    --band-prev: var(--tan);
+}
+
+#sponsor {
+    --band-prev: var(--brown);
+}
+
+#past {
+    --band-prev: var(--dark-pink);
 }
 
 .pink-img {
     width: 100%;
     margin-bottom: 1vw;
+}
+
+#past {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#past .tan-title,
+#past .tan-divider {
+    width: 100%;
+}
+
+#past .tan-divider {
+    margin-bottom: 2.5vw;
+}
+
+/* Past BrainJams: collapsed by default, toggled by .past-toggle */
+.past-heading {
+    cursor: pointer;
+}
+
+.past-toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.8vw;
+    background-color: var(--brown);
+    color: var(--tan);
+    border: none;
+    border-radius: 50px;
+    padding: 0.9vw 2.5vw;
+    font-family: 'Mini', sans-serif;
+    font-size: clamp(0.95rem, 1.2vw, 1.2rem);
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
+}
+
+.past-toggle:hover {
+    background-color: var(--dark-pink);
+    color: var(--brown);
+    transform: translateY(-2px);
+}
+
+.past-toggle-icon {
+    display: inline-block;
+    line-height: 1;
+    transform: translateY(-0.15em);
+    transition: transform 0.4s ease;
+}
+
+#past.open .past-toggle-icon {
+    transform: translateY(0.15em) rotate(180deg);
+}
+
+/* script.js animates max-height between 0 and the content's real height */
+.past-content {
+    width: 100%;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.7s ease;
+}
+
+.past-inner {
+    padding-top: 4vw;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+#past.open .past-inner {
+    opacity: 1;
 }
 
 .event-section {
@@ -339,12 +477,15 @@ body {
     line-height: 1.6;
 }
 
-.sponsor-belt {
+.belt-section {
     background: white;
     padding: 1.5vw 0;
+    margin-top: 4vw;
+}
+
+.sponsor-belt {
     overflow: hidden;
-    margin: 0 -5vw;
-    width: calc(100% + 10vw);
+    width: 100%;
 }
 
 .sponsor-track {
@@ -370,24 +511,6 @@ body {
 @keyframes scroll-sponsors {
     0% { transform: translateX(0); }
     100% { transform: translateX(-50%); }
-}
-
-#details {
-    scroll-margin-top: 2vw;
-}
-
-#register,
-#sponsor {
-    scroll-margin-top: 4vw;
-}
-
-.tan-container {
-    background-color: var(--tan);
-    border-radius: 0;
-    position: relative;
-    margin: 0 -5vw;
-    width: calc(100% + 10vw);
-    padding: 5vw 5vw 0 5vw;
 }
 
 .tan-title {
@@ -615,11 +738,10 @@ body {
 }
 
 .prizes-subtitle {
-    color: var(--tan);
-    font-size: clamp(1.2rem, 2vw, 1.8rem);
+    color: var(--dark-pink);
+    font-size: clamp(2.8rem, 5.5vw, 5.5rem);
     text-align: center;
-    font-weight: 500;
-    opacity: 0.85;
+    line-height: 1.1;
 }
 
 /* Judging Criteria */
@@ -681,26 +803,7 @@ body {
     font-size: clamp(1.5rem, 2.5vw, 2.5rem);
 }
 
-/* FAQ Container */
-.faq-container {
-    background-color: var(--brown);
-    border-radius: 50px 50px 0 0;
-    width: 100%;
-    padding: 8vw 5vw 5vw 5vw;
-    min-height: 100vh;
-    transition: all 0.8s ease;
-    margin-top: 3vw;
-}
-
-.faq-container.expanded {
-    border-radius: 0;
-    min-height: 100vh;
-    margin: 3vw -5vw -5vw -5vw;
-    width: calc(100% + 10vw);
-    padding: 8vw 10vw 5vw 10vw;
-    overflow: visible;
-}
-
+/* FAQ */
 .faq-title {
     color: var(--tan);
     font-size: clamp(2rem, 4vw, 4rem);
@@ -778,23 +881,7 @@ body {
     line-height: 1.6;
 }
 
-/* Registration Container */
-.register-container {
-    background-color: var(--tan);
-    border-radius: 50px 50px 0 0;
-    width: 100%;
-    padding: 5vw 5vw 4vw 5vw;
-    transition: all 0.8s ease;
-    margin-top: 8vw;
-}
-
-.register-container.expanded {
-    border-radius: 0;
-    margin: 8vw -5vw 0 -5vw;
-    width: calc(100% + 10vw);
-    padding: 5vw 10vw 4vw 10vw;
-}
-
+/* Registration */
 .register-content {
     display: flex;
     gap: 5vw;
@@ -839,6 +926,7 @@ body {
 }
 
 .register-desc {
+    text-wrap: pretty;
     color: var(--brown);
     font-size: clamp(1rem, 1.4vw, 1.4rem);
     line-height: 1.6;
@@ -877,8 +965,8 @@ body {
     border-left: 4px solid var(--dark-pink);
     padding: 1.5vw 2vw;
     border-radius: 0 10px 10px 0;
-    width: 100%;
-    margin-top: 2vw;
+    max-width: 1400px;
+    margin: 3vw auto 0 auto;
 }
 
 .register-note p {
@@ -900,11 +988,7 @@ body {
 
 .packages-header .register-divider {
     justify-content: center;
-}
-
-.packages-header .register-desc {
-    max-width: 900px;
-    margin: 0 auto 3vw auto;
+    margin-bottom: 4vw;
 }
 
 .packages-grid {
@@ -1011,6 +1095,71 @@ body {
 
 .package-card.featured .package-btn:hover {
     background-color: var(--tan);
+}
+
+/* Register call-to-action card (links out to the Google Form) */
+#register .register-content {
+    align-items: center;
+}
+
+#register .register-desc {
+    margin-bottom: 0;
+}
+
+.register-cta {
+    align-self: center;
+}
+
+.cta-title {
+    color: var(--dark-pink);
+    font-size: clamp(1.4rem, 2vw, 2rem);
+    margin-bottom: 1.5vw;
+}
+
+.cta-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 1.2vw;
+    margin-bottom: 2.5vw;
+}
+
+.cta-list li {
+    color: var(--tan);
+    font-family: 'BPreplay', sans-serif;
+    font-size: clamp(0.95rem, 1.2vw, 1.2rem);
+    line-height: 1.5;
+    display: flex;
+    align-items: flex-start;
+    gap: 0.8vw;
+}
+
+.cta-list strong {
+    color: var(--dark-pink);
+}
+
+.cta-btn {
+    display: block;
+    text-align: center;
+    text-decoration: none;
+}
+
+/* Sponsor band is rose, so pink accents switch to tan/brown to stay visible */
+.band-rose .register-badge,
+.band-rose .package-flag {
+    background-color: var(--tan);
+}
+
+.band-rose .register-divider {
+    color: var(--brown);
+}
+
+.band-rose .register-divider hr {
+    border-top-color: var(--brown);
+}
+
+.band-rose .package-card.featured {
+    border-color: var(--tan);
 }
 
 /* Registration Form */
@@ -1132,10 +1281,8 @@ body {
 
 /* Footer Contact */
 .footer-contact {
-    background-color: var(--light-pink);
-    padding: 4vw 5vw;
+    padding: 6vw 5vw;
     text-align: center;
-    margin-top: 8vw;
 }
 
 .footer-title {
@@ -1154,7 +1301,7 @@ body {
     display: inline-flex;
     align-items: center;
     gap: 1.5vw;
-    background-color: var(--tan);
+    background-color: var(--light-pink);
     border-radius: 50px;
     padding: 1.5vw 3vw;
     margin-bottom: 3vw;
@@ -1219,17 +1366,24 @@ body {
         scroll-margin-top: 15vw;
     }
 
-    #details {
-        scroll-margin-top: 15vw;
+    .band {
+        padding: 14vw 7vw 12vw 7vw;
+        scroll-margin-top: 60px;
     }
 
-    #faq {
-        scroll-margin-top: 15vw;
+    .band::before {
+        left: 3vw;
+        right: 3vw;
+        border-radius: 28px 28px 0 0;
     }
 
-    #register,
-    #sponsor {
-        scroll-margin-top: 8vw;
+    .band-flat {
+        padding: 9vw 5vw 12vw 5vw;
+    }
+
+    .belt-section {
+        padding: 3vw 0;
+        margin-top: 8vw;
     }
 
 
@@ -1276,14 +1430,6 @@ body {
     }
 
     /* FAQ */
-    .faq-container {
-        padding: 10vw 5vw 5vw 5vw;
-    }
-
-    .faq-container.expanded {
-        padding: 10vw 5vw 5vw 5vw;
-    }
-
     .faq-question {
         padding: 4vw 3vw;
     }
@@ -1293,16 +1439,6 @@ body {
     }
 
     /* Registration */
-    .register-container {
-        padding: 10vw 5vw 5vw 5vw;
-    }
-
-    .register-container.expanded {
-        padding: 10vw 5vw 5vw 5vw;
-        margin: 8vw 0 0 0;
-        width: 100%;
-    }
-
     .register-content {
         flex-direction: column;
         gap: 3vw;
@@ -1311,6 +1447,28 @@ body {
     .register-left,
     .register-right {
         width: 100%;
+    }
+
+    .past-toggle {
+        gap: 2vw;
+        padding: 3vw 6vw;
+    }
+
+    .cta-title {
+        margin-bottom: 4vw;
+    }
+
+    .cta-list {
+        gap: 3vw;
+        margin-bottom: 6vw;
+    }
+
+    .cta-list li {
+        gap: 2vw;
+    }
+
+    .packages-header .register-divider {
+        margin-bottom: 9vw;
     }
 
     .packages-grid {
@@ -1393,7 +1551,7 @@ body {
 
     /* Footer */
     .footer-contact {
-        padding: 10vw 5vw;
+        padding: 14vw 5vw;
     }
 
 
