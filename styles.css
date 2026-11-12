@@ -744,13 +744,6 @@ body {
     margin-bottom: 1vw;
 }
 
-.prizes-subtitle {
-    color: var(--dark-pink);
-    font-size: clamp(2.8rem, 5.5vw, 5.5rem);
-    text-align: center;
-    line-height: 1.1;
-}
-
 /* Judging Criteria */
 .criteria-row {
     display: flex;
